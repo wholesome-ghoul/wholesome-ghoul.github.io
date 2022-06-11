@@ -1,0 +1,57 @@
+import { Meta, Story } from "@storybook/addon-docs";
+
+import Input from "./Input";
+
+<Meta title="Input" component={Input} />
+
+export const Template = (args) => <Input {...args} />;
+
+# Input
+
+<Story
+  name="Small"
+  args={{
+    value: "",
+    children: "Input",
+    size: "small",
+    onChange: () => {},
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Medium"
+  args={{
+    value: "",
+    children: "Input",
+    size: "medium",
+    onChange: () => {},
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Large"
+  args={{
+    value: "",
+    children: "Input",
+    size: "large",
+    onChange: () => {},
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Fill"
+  args={{
+    value: "",
+    children: "Input",
+    size: "fill",
+    onChange: () => {},
+  }}
+>
+  {Template.bind({})}
+</Story>

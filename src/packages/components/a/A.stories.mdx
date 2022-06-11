@@ -1,0 +1,49 @@
+import { Meta, Story } from "@storybook/addon-docs";
+
+import A from "./A";
+
+<Meta title="A" component={A} />
+
+export const Template = (args) => <A {...args} />;
+
+# A
+
+<Story
+  name="Small"
+  args={{
+    children: "Click",
+    size: "small",
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Medium"
+  args={{
+    children: "Click",
+    size: "medium",
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Large"
+  args={{
+    children: "Click",
+    size: "large",
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<Story
+  name="Fill"
+  args={{
+    children: "Click",
+    size: "fill",
+  }}
+>
+  {Template.bind({})}
+</Story>
