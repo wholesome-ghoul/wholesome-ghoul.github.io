@@ -2,6 +2,7 @@
 
 ## Minimum
 
+- [ ] refresh still looks weird (default size + theme issues)
 - [ ] public/
 - [ ] add gha
 - [ ] hooks for aria labels like react-spectrum does?
