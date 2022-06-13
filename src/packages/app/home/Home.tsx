@@ -7,6 +7,7 @@ import {
   ThemeToggler,
   Iframe,
   Header,
+  TextField,
 } from "../../components";
 import { ThemeContext } from "../../context";
 import { themes } from "../../constants";
@@ -42,13 +43,15 @@ const getYoutubeIDFromURL = (ytLink: string) => {
   return match && match[7].length === 11 ? match[7] : null;
 };
 
+// TODO: too many states
+// TODO: move main grid into it's own component
 const Home = () => {
   const [ytLink, setYtLink] = React.useState("");
   const [isValidYtLink, setIsValidYtLink] = React.useState(false);
   const [request, setRequest] = React.useState("");
   const [youtubeID, setYoutubeID] = React.useState<string | null>(null);
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode(themes.dark);
-  const [grid, setGrid] = React.useState<Grid>({});
+  const [mainGrid, setMainGrid] = React.useState<Grid>({});
   const [gridPosition, setGridPosition] =
     React.useState<HomeGridPositions>(homeGridItems);
   const [size, setSize] = React.useState<HomeSizes>({
@@ -69,7 +72,7 @@ const Home = () => {
 
   useResizeObserver(
     document.body,
-    resizeHandler({ setGrid, setGridPosition, setSize })
+    resizeHandler({ setMainGrid, setGridPosition, setSize })
   );
 
   React.useEffect(() => {
@@ -82,7 +85,7 @@ const Home = () => {
     }
   }, [ytLink]);
 
-  const handler = () => {
+  const downloadHandler = () => {
     isValidYtLink && window.open(request, "_self");
   };
 
@@ -93,7 +96,7 @@ const Home = () => {
         toggleTheme,
       }}
     >
-      <Container grid={grid} className={styles.home}>
+      <Container grid={mainGrid} className={styles.home}>
         <Button
           icon={<Ty size={IconSize[size.logo]} />}
           onClick={() => alert("I don't know what to do in this case >.<")}
@@ -113,7 +116,7 @@ const Home = () => {
           onChange={handleInputChange}
         />
         <Button
-          onClick={handler}
+          onClick={downloadHandler}
           gridPosition={gridPosition.downloadButton}
           size={size.downloadButton}
           disabled={!isValidYtLink}
@@ -131,6 +134,16 @@ const Home = () => {
             size={size.iframe}
           />
         )}
+      </Container>
+      <Container>
+        <TextField
+          gridPosition={{
+            rowPos: "1/-1",
+            colPos: "1/-1",
+          }}
+        >
+          Sorry for the design, I am just a programmer.
+        </TextField>
       </Container>
     </ThemeContext.Provider>
   );

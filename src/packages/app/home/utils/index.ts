@@ -3,7 +3,7 @@ import { bp } from "../../../constants";
 import { HomeSizes, HomeGridPositions } from "../types";
 
 type ResizeHandler = {
-  setGrid: React.Dispatch<React.SetStateAction<Grid>>;
+  setMainGrid: React.Dispatch<React.SetStateAction<Grid>>;
   setGridPosition: React.Dispatch<React.SetStateAction<HomeGridPositions>>;
   setSize: React.Dispatch<React.SetStateAction<HomeSizes>>;
 };
@@ -29,7 +29,7 @@ const homeGridItems: HomeGridPositions = {
 };
 
 const resizeHandler =
-  ({ setGrid, setGridPosition, setSize }: ResizeHandler) =>
+  ({ setMainGrid, setGridPosition, setSize }: ResizeHandler) =>
   (_entry: ResizeObserverEntry) => {
     if (window.innerWidth <= bp.xsmall0) {
       setGridPosition(homeGridItems);
@@ -90,7 +90,7 @@ const resizeHandler =
       });
     }
 
-    setGrid({});
+    setMainGrid({});
   };
 
 export { resizeHandler, homeGridItems };
