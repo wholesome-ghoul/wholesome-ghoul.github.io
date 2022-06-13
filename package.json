@@ -2,7 +2,7 @@
   "name": "tubeyou-frontend",
   "version": "0.1.0",
   "private": true,
-  "tomepage": "https://wholesome-ghoul.github.io/",
+  "homepage": "https://wholesome-ghoul.github.io/",
   "scripts": {
     "start": "REACT_APP_STAGE_ENV=production react-scripts start",
     "start:dev": "REACT_APP_STAGE_ENV=development react-scripts start",
