@@ -1,4 +1,4 @@
-import { GridPos, Size } from "../../components/utils";
+import { GridPos, Size } from "tubeyou-components/dist/utils";
 
 // TODO: [key]: Size
 type Sizes = {

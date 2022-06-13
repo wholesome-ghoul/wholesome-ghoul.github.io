@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-import { Home } from "./packages/app";
-import { themes } from "./packages/constants";
+import { Home } from "./home";
+import { themes } from "tubeyou-components/dist/constants";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 // import reportWebVitals from "./reportWebVitals";
 

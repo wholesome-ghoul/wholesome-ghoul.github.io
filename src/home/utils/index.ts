@@ -1,5 +1,6 @@
-import { Grid } from "../../../components/utils";
-import { bp } from "../../../constants";
+import { Grid } from "tubeyou-components/dist/utils";
+import { bp } from "tubeyou-components/dist/constants";
+
 import { HomeSizes, HomeGridPositions } from "../types";
 
 type ResizeHandler = {

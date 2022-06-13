@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Button,
   Input,
@@ -9,15 +8,16 @@ import {
   Header,
   TextField,
   A,
-} from "../../components";
-import { ThemeContext } from "../../context";
-import { themes } from "../../constants";
-import { useDarkMode, useResizeObserver } from "../../components/hooks";
+} from "tubeyou-components";
+import { ThemeContext } from "tubeyou-components/dist/context";
+import { themes } from "tubeyou-components/dist/constants";
+import { useDarkMode, useResizeObserver } from "tubeyou-components/dist/hooks";
+import { TyIcon, EmailIcon } from "tubeyou-components/dist/icons";
+import { Grid, IconSize } from "tubeyou-components/dist/utils";
+
 import { HomeSizes, HomeGridPositions } from "./types";
-import { Grid, IconSize } from "../../components/utils";
 import { resizeHandler, homeGridItems } from "./utils";
 import styles from "./style.module.scss";
-import { TyIcon, EmailIcon } from "../../components/icons";
 
 const isValid = (ytLink: string) => {
   const p =
