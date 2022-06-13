@@ -2,7 +2,7 @@ import { BaseProps, Grid } from "../utils";
 
 type Props = BaseProps & {
   children: React.ReactNode;
-  grid?: Grid;
+  grid?: Grid | string;
 };
 
 export default Props;

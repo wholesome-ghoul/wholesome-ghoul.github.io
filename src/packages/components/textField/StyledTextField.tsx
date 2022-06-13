@@ -1,14 +1,12 @@
-import styled, { css, AnyStyledComponent } from "styled-components";
+import styled, { css } from "styled-components";
 
 import { GridPos } from "../utils";
 
-type AS = AnyStyledComponent["p"] | AnyStyledComponent["div"];
-
-const StyledTextFieldFactory = ({ as }: { as: AS }) => styled(as)`
+const StyledTextField = styled.div`
   ${({ rowPos, colPos }: GridPos) => css`
     grid-row: ${rowPos};
     grid-column: ${colPos};
   `}
 `;
 
-export default StyledTextFieldFactory;
+export default StyledTextField;

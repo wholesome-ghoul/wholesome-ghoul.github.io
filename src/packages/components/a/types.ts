@@ -7,6 +7,7 @@ type Props = BaseProps & {
   size?: Size;
   target?: Target;
   href?: string;
+  noBorder?: boolean;
 };
 
 export default Props;

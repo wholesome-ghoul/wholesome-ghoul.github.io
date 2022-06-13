@@ -2,15 +2,15 @@ import cx from "classnames";
 
 import Props from "./types";
 import styles from "./style.module.scss";
-import StyledTextFieldFactory from "./StyledTextField";
+import StyledTextField from "./StyledTextField";
 
-const StyledTextField = StyledTextFieldFactory({ as: "div" });
-
-const TextField = ({ children, size, gridPosition, className }: Props) => {
+// TODO: as sucks
+const TextField = ({ children, size, gridPosition, as, className }: Props) => {
   const styledProps = { ...gridPosition };
 
   return (
     <StyledTextField
+      as={as}
       className={cx(styles.textField, className)}
       {...styledProps}
     >
@@ -21,6 +21,7 @@ const TextField = ({ children, size, gridPosition, className }: Props) => {
 
 TextField.defaultProps = {
   size: "small",
+  as: "div"
 };
 
 export default TextField;

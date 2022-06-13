@@ -3,22 +3,33 @@ import cx from "classnames";
 import Props from "./types";
 import styles from "./style.module.scss";
 import StyledContainer from "./StyledContainer";
+import { Grid } from "../utils";
 
-const defaultRows = "repeat(12, minmax(0, 1fr))";
-const defaultCols = "repeat(12, minmax(0, 1fr))";
+const cellCreator = (n: number | string) => `repeat(${n}, minmax(0, 1fr))`;
+
+const defaultRows = cellCreator(12);
+const defaultCols = cellCreator(12);
 
 const Container = ({ children, className, grid, ...rest }: Props) => {
-  if (grid) {
-    if (!grid.rows) {
-      grid.rows = defaultRows;
-    }
+  let _grid: Grid = {};
 
-    if (!grid.cols) {
-      grid.cols = defaultCols;
+  if (grid) {
+    if (grid.constructor === String) {
+      [_grid.cols, _grid.rows] = grid.split("x").map(cellCreator); // 4x5
+    } else {
+      _grid = grid as Grid;
+
+      if (!_grid.rows) {
+        _grid.rows = defaultRows;
+      }
+
+      if (!_grid.cols) {
+        _grid.cols = defaultCols;
+      }
     }
   }
 
-  const styledProps = { ...grid };
+  const styledProps = { ..._grid };
 
   return (
     <StyledContainer

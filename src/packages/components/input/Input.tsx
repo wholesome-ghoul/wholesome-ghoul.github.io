@@ -24,7 +24,7 @@ const Input = ({
   return (
     <StyledInput
       className={cx(styles.input, styles[`${size}Input`], className)}
-      placeholder={placeholder}
+      placeholder={`${placeholder} Youtube Link goes here`}
       type={type}
       value={value}
       onChange={onChange}

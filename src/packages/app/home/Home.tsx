@@ -8,6 +8,7 @@ import {
   Iframe,
   Header,
   TextField,
+  A,
 } from "../../components";
 import { ThemeContext } from "../../context";
 import { themes } from "../../constants";
@@ -16,7 +17,7 @@ import { HomeSizes, HomeGridPositions } from "./types";
 import { Grid, IconSize } from "../../components/utils";
 import { resizeHandler, homeGridItems } from "./utils";
 import styles from "./style.module.scss";
-import Ty from "../../components/icons/Ty";
+import { TyIcon, EmailIcon } from "../../components/icons";
 
 const isValid = (ytLink: string) => {
   const p =
@@ -98,7 +99,7 @@ const Home = () => {
     >
       <Container grid={mainGrid} className={styles.home}>
         <Button
-          icon={<Ty size={IconSize[size.logo]} />}
+          icon={<TyIcon size={IconSize[size.logo]} />}
           onClick={() => alert("I don't know what to do in this case >.<")}
         />
         <Header gridPosition={gridPosition.header}>No Ads. Ever.</Header>
@@ -135,12 +136,23 @@ const Home = () => {
           />
         )}
       </Container>
-      <Container>
-        <TextField
+      <Container grid="1x2">
+        <A
           gridPosition={{
-            rowPos: "1/-1",
+            rowPos: "1",
             colPos: "1/-1",
           }}
+          href="mailto:wholesome.ghoul@gmail.com"
+          noBorder
+        >
+          <EmailIcon />
+        </A>
+        <TextField
+          gridPosition={{
+            rowPos: "2",
+            colPos: "1/-1",
+          }}
+          as="p"
         >
           Sorry for the design, I am just a programmer.
         </TextField>

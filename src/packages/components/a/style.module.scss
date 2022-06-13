@@ -12,8 +12,6 @@
 
 .a:hover {
   cursor: pointer;
-  background-color: var(--fg-color);
-  color: var(--bg-color);
 }
 
 .smallA {
@@ -36,4 +34,8 @@
 
 .fillA {
   width: 100%;
+}
+
+.noBorder {
+  border: none;
 }
