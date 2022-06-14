@@ -15,7 +15,7 @@ jobs:
         run: |
           git config --global user.email "wholesome.ghoul@gmail.com"
           git config --global user.name "Wholesome Ghoul"
-          npx standard-version -i RELEASE_BODY.md --skip.commit --skip.tag --skip.bump
+          npx standard-version -i RELEASE_BODY.md --skip.tag --skip.bump
       - name: publish tag
         id: publish_tag
         run: |

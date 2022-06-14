@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import {
   Button,
   Input,
@@ -11,7 +11,11 @@ import {
 } from "tubeyou-components";
 import { ThemeContext } from "tubeyou-components/dist/context";
 import { themes } from "tubeyou-components/dist/constants";
-import { useDarkMode, useResizeObserver } from "tubeyou-components/dist/hooks";
+import {
+  useDarkMode,
+  useResizeObserver,
+  useEventListener,
+} from "tubeyou-components/dist/hooks";
 import { TyIcon, EmailIcon } from "tubeyou-components/dist/icons";
 import { Grid, IconSize } from "tubeyou-components/dist/utils";
 
@@ -44,24 +48,45 @@ const getYoutubeIDFromURL = (ytLink: string) => {
   return match && match[7].length === 11 ? match[7] : null;
 };
 
+let holdTime: number = 0;
+const MIN_HOLD_TIME = 500;
+
 // TODO: too many states
 // TODO: move main grid into it's own component
 const Home = () => {
-  const [ytLink, setYtLink] = React.useState("");
-  const [isValidYtLink, setIsValidYtLink] = React.useState(false);
-  const [request, setRequest] = React.useState("");
-  const [youtubeID, setYoutubeID] = React.useState<string | null>(null);
+  const [ytLink, setYtLink] = useState("");
+  const [isValidYtLink, setIsValidYtLink] = useState(false);
+  const [request, setRequest] = useState("");
+  const [youtubeID, setYoutubeID] = useState<string | null>(null);
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode(themes.dark);
-  const [mainGrid, setMainGrid] = React.useState<Grid>({});
+  const [mainGrid, setMainGrid] = useState<Grid>({});
   const [gridPosition, setGridPosition] =
-    React.useState<HomeGridPositions>(homeGridItems);
-  const [size, setSize] = React.useState<HomeSizes>({
+    useState<HomeGridPositions>(homeGridItems);
+  const [size, setSize] = useState<HomeSizes>({
     input: "medium",
     downloadButton: "small",
     themeToggler: "small",
     iframe: "small",
     logo: "small",
   });
+
+  const holdStartListener = useCallback(() => {
+    holdTime = Date.now();
+  }, []);
+  const holdEndListener = useCallback(async () => {
+    holdTime = Date.now() - holdTime;
+    if (holdTime >= MIN_HOLD_TIME) {
+      const clipboard = await navigator.clipboard.readText();
+      setYtLink(clipboard);
+    }
+    holdTime = 0;
+  }, []);
+
+  useEventListener("touchstart", holdStartListener, document.body);
+  useEventListener("touchend", holdEndListener, document.body);
+
+  useEventListener("mousedown", holdStartListener, document.body);
+  useEventListener("mouseup", holdEndListener, document.body);
 
   const toggleTheme = () => {
     setDarkModeEnabled((prev: any) => !prev);
@@ -77,10 +102,10 @@ const Home = () => {
   );
 
   React.useEffect(() => {
-    if (isValid(ytLink)) {
+    if (isValid(ytLink.trim())) {
       setIsValidYtLink(true);
-      setYoutubeID(getYoutubeIDFromURL(ytLink));
-      setRequest(`${server}/api/convert?ytLink=${ytLink}`);
+      setYoutubeID(getYoutubeIDFromURL(ytLink.trim()));
+      setRequest(`${server}/api/convert?ytLink=${ytLink.trim()}`);
     } else {
       setIsValidYtLink(false);
     }
