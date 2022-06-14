@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/compare/v0.1.1...v0.1.2) (2022-06-14)
+
+
+### Features
+
+* mouse/touch hold pastes from clipboard ([edf7a8c](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/commits/edf7a8c4a410b51b7115d42cb3eb0b7c3047662c))
+
 ### 0.1.1 (2022-06-14)
 
 
