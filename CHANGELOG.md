@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/compare/v0.3.0...v0.3.2) (2022-06-14)
+
+
+### Bug Fixes
+
+* don't ignore bump ([f98adfe](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/commits/f98adfe448bef33c7e2369447307cab0aff24933))
+
 ### [0.3.1](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/compare/v0.3.0...v0.3.1) (2022-06-14)
 
 
