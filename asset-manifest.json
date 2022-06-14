@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "https://wholesome-ghoul.github.io/static/css/main.90b681cc.css",
-    "main.js": "https://wholesome-ghoul.github.io/static/js/main.6459621f.js",
+    "main.css": "https://wholesome-ghoul.github.io/static/css/main.940121ec.css",
+    "main.js": "https://wholesome-ghoul.github.io/static/js/main.f415086b.js",
     "index.html": "https://wholesome-ghoul.github.io/index.html",
-    "main.90b681cc.css.map": "https://wholesome-ghoul.github.io/static/css/main.90b681cc.css.map",
-    "main.6459621f.js.map": "https://wholesome-ghoul.github.io/static/js/main.6459621f.js.map"
+    "main.940121ec.css.map": "https://wholesome-ghoul.github.io/static/css/main.940121ec.css.map",
+    "main.f415086b.js.map": "https://wholesome-ghoul.github.io/static/js/main.f415086b.js.map"
   },
   "entrypoints": [
-    "static/css/main.90b681cc.css",
-    "static/js/main.6459621f.js"
+    "static/css/main.940121ec.css",
+    "static/js/main.f415086b.js"
   ]
 }
