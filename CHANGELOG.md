@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/compare/v0.3.2...v0.4.0) (2022-06-20)
+
+
+### Features
+
+* add modal ([82db761](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/commits/82db761a5a86c2bd8c866638bde10d7b9d6b489d))
+
 ### [0.3.2](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/compare/v0.3.0...v0.3.2) (2022-06-14)
 
 
