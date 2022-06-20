@@ -8,6 +8,8 @@ import {
   Header,
   TextField,
   A,
+  Sidebar,
+  Modal,
 } from "tubeyou-components";
 import { ThemeContext } from "tubeyou-components/dist/context";
 import { themes } from "tubeyou-components/dist/constants";
@@ -22,6 +24,7 @@ import { Grid, IconSize } from "tubeyou-components/dist/utils";
 import { HomeSizes, HomeGridPositions } from "./types";
 import { resizeHandler, homeGridItems } from "./utils";
 import styles from "./style.module.scss";
+import { MIN_MOUSE_HOLD_TIME } from "../utils";
 
 const isValid = (ytLink: string) => {
   const p =
@@ -49,7 +52,6 @@ const getYoutubeIDFromURL = (ytLink: string) => {
 };
 
 let holdTime: number = 0;
-const MIN_HOLD_TIME = 500;
 
 // TODO: too many states
 // TODO: move main grid into it's own component
@@ -59,6 +61,7 @@ const Home = () => {
   const [request, setRequest] = useState("");
   const [youtubeID, setYoutubeID] = useState<string | null>(null);
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode(themes.dark);
+  const [shortcutsModal, setShortcutsModal] = useState(false);
   const [mainGrid, setMainGrid] = useState<Grid>({});
   const [gridPosition, setGridPosition] =
     useState<HomeGridPositions>(homeGridItems);
@@ -68,6 +71,8 @@ const Home = () => {
     themeToggler: "small",
     iframe: "small",
     logo: "small",
+    sidebar: "small",
+    modal: "medium",
   });
 
   const holdStartListener = useCallback(() => {
@@ -75,7 +80,7 @@ const Home = () => {
   }, []);
   const holdEndListener = useCallback(async () => {
     holdTime = Date.now() - holdTime;
-    if (holdTime >= MIN_HOLD_TIME) {
+    if (holdTime >= MIN_MOUSE_HOLD_TIME) {
       const clipboard = await navigator.clipboard.readText();
       setYtLink(clipboard);
     }
@@ -122,10 +127,30 @@ const Home = () => {
         toggleTheme,
       }}
     >
+      <Modal visible={shortcutsModal} size={size.modal}>
+        <Container className={styles.shortcutsModalContent}>
+          <Container gridPosition={{ rowPos: "1", colPos: "1/-1" }} noGrid>
+            - Hold mouse/touch anywhere on the page for at least{" "}
+            {MIN_MOUSE_HOLD_TIME} milliseconds to paste the last shit you copied
+          </Container>
+        </Container>
+      </Modal>
       <Container grid={mainGrid} className={styles.home}>
-        <Button
-          icon={<TyIcon size={IconSize[size.logo]} />}
-          onClick={() => alert("I don't know what to do in this case >.<")}
+        <Sidebar
+          options={[
+            {
+              icon: (
+                <Button
+                  icon={<TyIcon size={IconSize[size.logo]} />}
+                  onClick={() => setShortcutsModal((prev) => !prev)}
+                />
+              ),
+            },
+            {
+              icon: <ThemeToggler size={size.themeToggler} />,
+            },
+          ]}
+          gridPosition={gridPosition.sidebar}
         />
         <Header gridPosition={gridPosition.header}>No Ads. Ever.</Header>
         <Header
@@ -149,10 +174,6 @@ const Home = () => {
         >
           Download
         </Button>
-        <ThemeToggler
-          size={size.themeToggler}
-          gridPosition={gridPosition.themeToggler}
-        />
         {isValidYtLink && (
           <Iframe
             src={`https://www.youtube.com/embed/${youtubeID}`}

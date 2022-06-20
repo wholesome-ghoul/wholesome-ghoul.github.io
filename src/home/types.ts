@@ -7,17 +7,18 @@ type Sizes = {
   themeToggler: Size;
   iframe: Size;
   logo: Size;
+  sidebar: Size;
+  modal: Size;
 };
 
 // TODO: [key]: GridPos
 type GridPositions = {
   input: GridPos;
   downloadButton: GridPos;
-  themeToggler: GridPos;
   iframe: GridPos;
   header: GridPos;
   subHeader: GridPos;
-  logo: GridPos;
+  sidebar: GridPos;
 };
 
 export type { Sizes as HomeSizes, GridPositions as HomeGridPositions };

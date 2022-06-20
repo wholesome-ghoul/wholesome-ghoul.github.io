@@ -13,20 +13,18 @@ type ResizeHandler = {
 
 const input = { rowPos: "3", colPos: "5/9" };
 const downloadButton = { rowPos: "4", colPos: "5/9" };
-const themeToggler = { rowPos: "1/2", colPos: "12" };
 const iframe = { rowPos: "6/10", colPos: "2/12" };
 const header = { rowPos: "1", colPos: "2/12" };
 const subHeader = { rowPos: "2", colPos: "2/12" };
-const logo = { rowPos: "2", colPos: "2/12" };
+const sidebar = { rowPos: "1/12", colPos: "1" };
 
 const homeGridItems: HomeGridPositions = {
   input,
   downloadButton,
-  themeToggler,
   iframe,
   header,
   subHeader,
-  logo,
+  sidebar,
 };
 
 const resizeHandler =
@@ -40,6 +38,8 @@ const resizeHandler =
         downloadButton: "small",
         iframe: "small",
         logo: "small",
+        sidebar: "small",
+        modal: "medium",
       });
     } else if (window.innerWidth <= bp.xsmall1) {
       setGridPosition(homeGridItems);
@@ -49,6 +49,8 @@ const resizeHandler =
         downloadButton: "small",
         iframe: "medium",
         logo: "medium",
+        sidebar: "medium",
+        modal: "medium",
       });
     } else if (window.innerWidth <= bp.xsmall2) {
       setGridPosition(homeGridItems);
@@ -58,6 +60,8 @@ const resizeHandler =
         downloadButton: "medium",
         iframe: "medium",
         logo: "medium",
+        sidebar: "medium",
+        modal: "medium",
       });
     } else if (window.innerWidth <= bp.small0) {
       setGridPosition(homeGridItems);
@@ -67,6 +71,8 @@ const resizeHandler =
         downloadButton: "medium",
         iframe: "large",
         logo: "large",
+        sidebar: "large",
+        modal: "large",
       });
     } else if (window.innerWidth <= bp.medium0) {
       setGridPosition(homeGridItems);
@@ -76,6 +82,8 @@ const resizeHandler =
         downloadButton: "medium",
         iframe: "large",
         logo: "xlarge",
+        sidebar: "xlarge",
+        modal: "large",
       });
     } else {
       setGridPosition({
@@ -88,6 +96,8 @@ const resizeHandler =
         downloadButton: "medium",
         iframe: "large",
         logo: "xlarge",
+        sidebar: "xlarge",
+        modal: "large",
       });
     }
 
