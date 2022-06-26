@@ -93,6 +93,12 @@ const Home = () => {
   useEventListener("mousedown", holdStartListener, document.body);
   useEventListener("mouseup", holdEndListener, document.body);
 
+  useEventListener(
+    "keydown",
+    (e) => e.keyCode === 27 && setShortcutsModal(false),
+    document.body
+  );
+
   const toggleTheme = () => {
     setDarkModeEnabled((prev: any) => !prev);
   };
