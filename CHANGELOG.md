@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/compare/v0.4.0...v0.4.1) (2022-06-26)
+
+
+### Features
+
+* modal can be closed with esc ([f34f5b0](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/commits/f34f5b059d5427c16481bac31065026d96d4ccd6))
+
 ## [0.4.0](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/compare/v0.3.2...v0.4.0) (2022-06-20)
 
 
