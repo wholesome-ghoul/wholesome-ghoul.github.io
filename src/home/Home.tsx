@@ -149,6 +149,7 @@ const Home = () => {
                 <Button
                   icon={<TyIcon size={IconSize[size.logo]} />}
                   onClick={() => setShortcutsModal((prev) => !prev)}
+                  active={shortcutsModal}
                 />
               ),
             },
@@ -157,6 +158,7 @@ const Home = () => {
             },
           ]}
           gridPosition={gridPosition.sidebar}
+          className={styles.sidebar}
         />
         <Header gridPosition={gridPosition.header}>No Ads. Ever.</Header>
         <Header

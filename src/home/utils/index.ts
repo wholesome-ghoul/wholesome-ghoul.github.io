@@ -81,7 +81,7 @@ const resizeHandler =
         input: "large",
         downloadButton: "medium",
         iframe: "large",
-        logo: "xlarge",
+        logo: "large",
         sidebar: "xlarge",
         modal: "large",
       });
@@ -91,7 +91,7 @@ const resizeHandler =
         iframe: { ...iframe, rowPos: "5/12" },
       });
       setSize({
-        themeToggler: "large",
+        themeToggler: "xlarge",
         input: "large",
         downloadButton: "medium",
         iframe: "large",
