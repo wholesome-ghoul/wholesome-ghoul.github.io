@@ -134,11 +134,12 @@ const Home = () => {
       }}
     >
       <Modal visible={shortcutsModal} size={size.modal}>
-        <Container className={styles.shortcutsModalContent}>
-          <Container gridPosition={{ rowPos: "1", colPos: "1/-1" }} noGrid>
-            - Hold mouse/touch anywhere on the page for at least{" "}
+        <Container className={styles.shortcutsModalContent} grid="1x2">
+          <li>
+            Hold mouse/touch anywhere on the page for at least{" "}
             {MIN_MOUSE_HOLD_TIME} milliseconds to paste the last shit you copied
-          </Container>
+          </li>
+          <li>Press `ESC` or click the logo again to close this modal</li>
         </Container>
       </Modal>
       <Container grid={mainGrid} className={styles.home}>
