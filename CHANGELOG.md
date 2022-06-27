@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/compare/v0.4.2...v0.5.0) (2022-06-27)
+
+
+### Features
+
+* add switch component ([36ecdf3](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/commits/36ecdf3f5f507d69798d06b819491f4ce478c643))
+
 ### [0.4.2](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/compare/v0.4.1...v0.4.2) (2022-06-27)
 
 ### [0.4.1](https://github.com/wholesome-ghoul/wholesome-ghoul.github.io/compare/v0.4.0...v0.4.1) (2022-06-26)
