@@ -10,6 +10,7 @@ import {
   A,
   Sidebar,
   Modal,
+  Switch,
 } from "tubeyou-components";
 import { ThemeContext } from "tubeyou-components/dist/context";
 import { themes } from "tubeyou-components/dist/constants";
@@ -17,6 +18,7 @@ import {
   useDarkMode,
   useResizeObserver,
   useEventListener,
+  useLocalStorage,
 } from "tubeyou-components/dist/hooks";
 import { TyIcon, EmailIcon } from "tubeyou-components/dist/icons";
 import { Grid, IconSize } from "tubeyou-components/dist/utils";
@@ -62,6 +64,10 @@ const Home = () => {
   const [youtubeID, setYoutubeID] = useState<string | null>(null);
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode(themes.dark);
   const [shortcutsModal, setShortcutsModal] = useState(false);
+  const [shortcutsEnabled, setShortcutsEnabled] = useLocalStorage(
+    "tubeyou-shortcuts",
+    true
+  );
   const [mainGrid, setMainGrid] = useState<Grid>({});
   const [gridPosition, setGridPosition] =
     useState<HomeGridPositions>(homeGridItems);
@@ -76,16 +82,20 @@ const Home = () => {
   });
 
   const holdStartListener = useCallback(() => {
-    holdTime = Date.now();
-  }, []);
-  const holdEndListener = useCallback(async () => {
-    holdTime = Date.now() - holdTime;
-    if (holdTime >= MIN_MOUSE_HOLD_TIME) {
-      const clipboard = await navigator.clipboard.readText();
-      setYtLink(clipboard);
+    if (shortcutsEnabled) {
+      holdTime = Date.now();
     }
-    holdTime = 0;
-  }, []);
+  }, [shortcutsEnabled]);
+  const holdEndListener = useCallback(async () => {
+    if (shortcutsEnabled) {
+      holdTime = Date.now() - holdTime;
+      if (holdTime >= MIN_MOUSE_HOLD_TIME) {
+        const clipboard = await navigator.clipboard.readText();
+        setYtLink(clipboard);
+      }
+      holdTime = 0;
+    }
+  }, [shortcutsEnabled]);
 
   useEventListener("touchstart", holdStartListener, document.body);
   useEventListener("touchend", holdEndListener, document.body);
@@ -95,7 +105,7 @@ const Home = () => {
 
   useEventListener(
     "keydown",
-    (e) => e.keyCode === 27 && setShortcutsModal(false),
+    (e) => shortcutsEnabled && e.keyCode === 27 && setShortcutsModal(false),
     document.body
   );
 
@@ -140,6 +150,12 @@ const Home = () => {
             {MIN_MOUSE_HOLD_TIME} milliseconds to paste the last shit you copied
           </li>
           <li>Press `ESC` or click the logo again to close this modal</li>
+          <Switch
+            checked={shortcutsEnabled}
+            onChange={() => setShortcutsEnabled((prev: boolean) => !prev)}
+          >
+            Shortcuts are {shortcutsEnabled ? "enabled" : "disabled"}
+          </Switch>
         </Container>
       </Modal>
       <Container grid={mainGrid} className={styles.home}>
