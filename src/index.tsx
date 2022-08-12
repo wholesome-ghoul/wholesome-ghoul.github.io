@@ -4,15 +4,12 @@ import "./index.scss";
 import { Home } from "./home";
 import { themes } from "tubeyou-components/dist/constants";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-// import reportWebVitals from "./reportWebVitals";
 
 document.body.setAttribute(
   "data-theme",
 
   JSON.parse(
-    window.localStorage.getItem(
-      process.env.REACT_APP_THEME_LOCAL_STORAGE_KEY!
-    ) || "false" // >.<
+    window.localStorage.getItem(process.env.THEME_LOCAL_STORAGE_KEY!) || "false"
   )
     ? themes.dark
     : themes.light
@@ -28,8 +25,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();

@@ -41,9 +41,9 @@ const isValid = (ytLink: string) => {
 
 // TODO: .env?
 const server =
-  process.env.REACT_APP_STAGE_ENV === "development"
-    ? process.env.REACT_APP_PRODUCTION_LOCAL_URL
-    : process.env.REACT_APP_PRODUCTION_SERVER_URL;
+  process.env.NODE_ENV === "development"
+    ? process.env.PRODUCTION_LOCAL_URL
+    : process.env.PRODUCTION_SERVER_URL;
 
 const getYoutubeIDFromURL = (ytLink: string) => {
   const regExp =

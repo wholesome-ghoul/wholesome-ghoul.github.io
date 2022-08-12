@@ -2,6 +2,7 @@
 
 ## Minimum
 
+- [ ] devtool in webpack
 - [ ] refresh still looks weird (default size + theme issues)
 - [ ] public/
 - [ ] add gha
