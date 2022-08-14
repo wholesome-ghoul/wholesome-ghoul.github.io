@@ -1,13 +1,13 @@
 {
   "name": "tubeyou-frontend",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "private": true,
   "homepage": "https://wholesome-ghoul.github.io/",
   "scripts": {
     "start:dev": "NODE_ENV=development webpack server",
     "start": "NODE_ENV=production webpack server",
     "build": "NODE_ENV=production webpack",
-    "deploy": "yarn build && gh-pages -d build",
+    "deploy": "yarn build && gh-pages -d dist",
     "test:cypress": "yarn cypress run-ct",
     "test:cypress:open": "yarn cypress open-ct",
     "prepare": "husky install",
