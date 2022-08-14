@@ -2498,6 +2498,33 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.3.tgz#472eaab5f15c1ffdd7f8628bd4c4f753995ec79e"
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
+"@tubeu/configs-tsconfig@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@tubeu/configs-tsconfig/-/configs-tsconfig-0.0.6.tgz#78ce9228ba12df97377c9a15988cfb8d2a9b74b4"
+  integrity sha512-4GoKuiOYSwkiGNDRbr0RSioKuWVe63zFchkv8Ugfjy8fWy3WU7u8kLF+fhB+iswnQeNsOrovsa/JJAshzhBMMg==
+  dependencies:
+    typescript "^4.7.4"
+
+"@tubeu/configs-webpack@^0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@tubeu/configs-webpack/-/configs-webpack-0.1.13.tgz#03fb26405b0860fa3b8b0fdbbdfd832dc2440f45"
+  integrity sha512-V7v1JdQqR1BxfNJd1xXNvt7ktyTNc2MuH0hAbyjcWGMZcnvsAMtsq1AK7kYHTp/NgkmIL+RE5TLTxXTZIoD9NA==
+  dependencies:
+    "@types/webpack" "^5.28.0"
+    babel-loader "^8.2.5"
+    css-loader "^6.7.1"
+    dotenv "^16.0.1"
+    html-webpack-plugin "^5.5.0"
+    mini-css-extract-plugin "^2.6.1"
+    sass-loader "^13.0.2"
+    style-loader "^3.3.1"
+    ts-loader "^9.3.1"
+    ts-node "^10.9.1"
+    typescript "^4.7.4"
+    webpack "^5.74.0"
+    webpack-cli "^4.10.0"
+    webpack-dev-server "^4.10.0"
+
 "@types/aria-query@^4.2.0":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-4.2.2.tgz#ed4e0ad92306a704f9fb132a0cfcf77486dbe2bc"

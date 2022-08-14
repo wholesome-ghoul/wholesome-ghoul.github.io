@@ -1,0 +1,8 @@
+{
+  "extends": "./node_modules/@tubeu/configs-tsconfig/dist/tsconfig.build.json",
+  "compilerOptions": {
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "noEmit": true
+  },
+  "include": ["src"]
+}
