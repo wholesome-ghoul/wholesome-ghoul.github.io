@@ -847,10 +847,10 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.3.tgz#472eaab5f15c1ffdd7f8628bd4c4f753995ec79e"
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
-"@tubeu/components@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@tubeu/components/-/components-1.0.5.tgz#61ddce54755fafd7f2dd69341e4df17881cd4685"
-  integrity sha512-G4CR4BqXHM3JHV0NSi/eWsKNNf4ADIqWm3V/+stCRLLGaPA/JSAp+vm5lXdit7MtK3Nntpa+4k8D/kPwhMxUqA==
+"@tubeu/components@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@tubeu/components/-/components-1.0.7.tgz#faf54a46ada8f58c454ee3206de3233245810fb7"
+  integrity sha512-He+rkXHy74LjrjkW4YjMR+pifPrmKsMP+I5/NNXuSUSFnWd6d/1z1JSK2TS4cFI0j198c8vMQzQS/OPzd49LHw==
 
 "@tubeu/configs-tsconfig@^0.0.6":
   version "0.0.6"
@@ -859,10 +859,10 @@
   dependencies:
     typescript "^4.7.4"
 
-"@tubeu/configs-webpack@^0.1.17":
-  version "0.1.17"
-  resolved "https://registry.yarnpkg.com/@tubeu/configs-webpack/-/configs-webpack-0.1.17.tgz#ce2b77bfb37413dbb510481ed82e4053a23571aa"
-  integrity sha512-EHE7AYntlrEBo4iTNy/PO7qCip872zIFtTha19Lti0W/BeVpXpaPbkjvTLMYs3DKzLPaDaz4FY0wqC4+XfZI+A==
+"@tubeu/configs-webpack@^0.1.18":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/@tubeu/configs-webpack/-/configs-webpack-0.1.18.tgz#c9d511a5bd77003f3c81c46918bda0a8b8f6d840"
+  integrity sha512-y91MfXToLrCiXvfABVO58uPtxFgrkFHJgNCUeZ3kJ5sl5vuXksrO0WUHLAtQ64VZHE6txpFz7doJuac8gKEeUw==
   dependencies:
     "@types/webpack" "^5.28.0"
     babel-loader "^8.2.5"
