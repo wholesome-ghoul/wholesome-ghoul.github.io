@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "NODE_ENV=development webpack server",
     "start": "NODE_ENV=production webpack server",
-    "build": "NODE_ENV=production webpack",
+    "build": "cp -f public/* dist && NODE_ENV=production webpack",
     "deploy": "yarn build && gh-pages -d dist",
     "test:cypress": "yarn cypress run-ct",
     "test:cypress:open": "yarn cypress open-ct",
