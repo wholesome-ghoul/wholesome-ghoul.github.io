@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react"
 import {
   Button,
   Input,
@@ -11,66 +11,66 @@ import {
   Sidebar,
   Modal,
   Switch,
-} from "tubeyou-components";
-import { ThemeContext } from "tubeyou-components/dist/context";
-import { themes } from "tubeyou-components/dist/constants";
+} from "@tubeu/components"
+import { ThemeContext } from "@tubeu/components/dist/context"
+import { themes } from "@tubeu/components/dist/constants"
 import {
   useDarkMode,
   useResizeObserver,
   useEventListener,
   useLocalStorage,
-} from "tubeyou-components/dist/hooks";
-import { TyIcon, EmailIcon } from "tubeyou-components/dist/icons";
-import { Grid, IconSize } from "tubeyou-components/dist/utils";
+} from "@tubeu/components/dist/hooks"
+import { TyIcon, EmailIcon } from "@tubeu/components/dist/icons"
+import { Grid, IconSize } from "@tubeu/components/dist/utils"
 
-import { HomeSizes, HomeGridPositions } from "./types";
-import { resizeHandler, homeGridItems } from "./utils";
-import styles from "./style.module.scss";
-import { MIN_MOUSE_HOLD_TIME } from "../utils";
+import { HomeSizes, HomeGridPositions } from "./types"
+import { resizeHandler, homeGridItems } from "./utils"
+import styles from "./style.module.scss"
+import { MIN_MOUSE_HOLD_TIME } from "../utils"
 
 const isValid = (ytLink: string) => {
   const p =
-    /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-  const matches = ytLink.match(p);
+    /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/
+  const matches = ytLink.match(p)
   if (matches) {
-    return matches[1];
+    return matches[1]
   }
 
-  return false;
-};
+  return false
+}
 
 // TODO: .env?
 const server =
   process.env.NODE_ENV === "development"
     ? process.env.PRODUCTION_LOCAL_URL
-    : process.env.PRODUCTION_SERVER_URL;
+    : process.env.PRODUCTION_SERVER_URL
 
 const getYoutubeIDFromURL = (ytLink: string) => {
   const regExp =
-    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-  const match = ytLink.match(regExp);
+    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+  const match = ytLink.match(regExp)
 
-  return match && match[7].length === 11 ? match[7] : null;
-};
+  return match && match[7].length === 11 ? match[7] : null
+}
 
-let holdTime: number = 0;
+let holdTime: number = 0
 
 // TODO: too many states
 // TODO: move main grid into it's own component
 const Home = () => {
-  const [ytLink, setYtLink] = useState("");
-  const [isValidYtLink, setIsValidYtLink] = useState(false);
-  const [request, setRequest] = useState("");
-  const [youtubeID, setYoutubeID] = useState<string | null>(null);
-  const [darkModeEnabled, setDarkModeEnabled] = useDarkMode(themes.dark);
-  const [shortcutsModal, setShortcutsModal] = useState(false);
+  const [ytLink, setYtLink] = useState("")
+  const [isValidYtLink, setIsValidYtLink] = useState(false)
+  const [request, setRequest] = useState("")
+  const [youtubeID, setYoutubeID] = useState<string | null>(null)
+  const [darkModeEnabled, setDarkModeEnabled] = useDarkMode(themes.dark)
+  const [shortcutsModal, setShortcutsModal] = useState(false)
   const [shortcutsEnabled, setShortcutsEnabled] = useLocalStorage(
     "tubeyou-shortcuts",
     true
-  );
-  const [mainGrid, setMainGrid] = useState<Grid>({});
+  )
+  const [mainGrid, setMainGrid] = useState<Grid>({})
   const [gridPosition, setGridPosition] =
-    useState<HomeGridPositions>(homeGridItems);
+    useState<HomeGridPositions>(homeGridItems)
   const [size, setSize] = useState<HomeSizes>({
     input: "medium",
     downloadButton: "small",
@@ -79,62 +79,62 @@ const Home = () => {
     logo: "small",
     sidebar: "small",
     modal: "medium",
-  });
+  })
 
   const holdStartListener = useCallback(() => {
     if (shortcutsEnabled) {
-      holdTime = Date.now();
+      holdTime = Date.now()
     }
-  }, [shortcutsEnabled]);
+  }, [shortcutsEnabled])
   const holdEndListener = useCallback(async () => {
     if (shortcutsEnabled) {
-      holdTime = Date.now() - holdTime;
+      holdTime = Date.now() - holdTime
       if (holdTime >= MIN_MOUSE_HOLD_TIME) {
-        const clipboard = await navigator.clipboard.readText();
-        setYtLink(clipboard);
+        const clipboard = await navigator.clipboard.readText()
+        setYtLink(clipboard)
       }
-      holdTime = 0;
+      holdTime = 0
     }
-  }, [shortcutsEnabled]);
+  }, [shortcutsEnabled])
 
-  useEventListener("touchstart", holdStartListener, document.body);
-  useEventListener("touchend", holdEndListener, document.body);
+  useEventListener("touchstart", holdStartListener, document.body)
+  useEventListener("touchend", holdEndListener, document.body)
 
-  useEventListener("mousedown", holdStartListener, document.body);
-  useEventListener("mouseup", holdEndListener, document.body);
+  useEventListener("mousedown", holdStartListener, document.body)
+  useEventListener("mouseup", holdEndListener, document.body)
 
   useEventListener(
     "keydown",
     (e) => shortcutsEnabled && e.keyCode === 27 && setShortcutsModal(false),
     document.body
-  );
+  )
 
   const toggleTheme = () => {
-    setDarkModeEnabled((prev: any) => !prev);
-  };
+    setDarkModeEnabled((prev: any) => !prev)
+  }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setYtLink(event.currentTarget.value);
-  };
+    setYtLink(event.currentTarget.value)
+  }
 
   useResizeObserver(
     document.body,
     resizeHandler({ setMainGrid, setGridPosition, setSize })
-  );
+  )
 
   React.useEffect(() => {
     if (isValid(ytLink.trim())) {
-      setIsValidYtLink(true);
-      setYoutubeID(getYoutubeIDFromURL(ytLink.trim()));
-      setRequest(`${server}/api/convert?ytLink=${ytLink.trim()}`);
+      setIsValidYtLink(true)
+      setYoutubeID(getYoutubeIDFromURL(ytLink.trim()))
+      setRequest(`${server}/api/convert?ytLink=${ytLink.trim()}`)
     } else {
-      setIsValidYtLink(false);
+      setIsValidYtLink(false)
     }
-  }, [ytLink]);
+  }, [ytLink])
 
   const downloadHandler = () => {
-    isValidYtLink && window.open(request, "_self");
-  };
+    isValidYtLink && window.open(request, "_self")
+  }
 
   return (
     <ThemeContext.Provider
@@ -229,7 +229,7 @@ const Home = () => {
         </TextField>
       </Container>
     </ThemeContext.Provider>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

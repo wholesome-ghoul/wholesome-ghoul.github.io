@@ -1,9 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.scss";
-import { Home } from "./home";
-import { themes } from "tubeyou-components/dist/constants";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react"
+import ReactDOM from "react-dom"
+import "./index.scss"
+import { Home } from "./home"
+import { themes } from "@tubeu/components/dist/constants"
+import { HashRouter as Router, Routes, Route } from "react-router-dom"
 
 document.body.setAttribute(
   "data-theme",
@@ -13,7 +13,7 @@ document.body.setAttribute(
   )
     ? themes.dark
     : themes.light
-);
+)
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,4 +24,4 @@ ReactDOM.render(
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
-);
+)
